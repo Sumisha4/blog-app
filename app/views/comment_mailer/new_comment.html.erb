@@ -1,0 +1,4 @@
+<h1>Hi <%= @author.name %>!</h1>
+<p><%= @comment.user.name %> commented on your post "<%= @post.title %>":</p>
+<p><%= @comment.body %></p>
+<a href="<%= post_url(@post) %>">View post</a>

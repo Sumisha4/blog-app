@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+
+    <nav class="bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-bold text-purple-700">BlogApp</a>
+      <div class="flex gap-4 items-center">
+        <% if user_signed_in? %>
+          <span class="text-sm text-gray-600">Hi, <%= current_user.name %></span>
+          <%= link_to "New Post", new_post_path, class: "text-sm bg-purple-600 text-white px-4 py-2 rounded-lg" %>
+          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-sm text-gray-600 hover:text-red-500 bg-transparent border-none cursor-pointer font-sans" %> 
+        <% else %>
+          <%= link_to "Log in", new_user_session_path, class: "text-sm text-gray-600" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "text-sm bg-purple-600 text-white px-4 py-2 rounded-lg" %>
+        <% end %>
+      </div>
+    </nav>
+
+    <main class="w-full px-6 py-8">
+      <p class="text-green-600 mb-4"><%= notice %></p>
+      <p class="text-red-600 mb-4"><%= alert %></p>
+      <%= yield %>
+    </main>
+
+  </body>
+</html>

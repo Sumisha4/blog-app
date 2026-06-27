@@ -1,0 +1,18 @@
+input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea, select {
+    border: 1px solid #ccc;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 8px;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 6px;
+  }

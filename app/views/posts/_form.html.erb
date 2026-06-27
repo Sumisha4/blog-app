@@ -1,0 +1,48 @@
+<%= form_with(model: post, class: "contents") do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:title].none?, "border-red-400 focus:outline-red-600": post.errors[:title].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :body %>
+    <%= form.textarea :body, rows: 4, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": post.errors[:body].none?, "border-red-400 focus:outline-red-600": post.errors[:body].any?}] %>
+  </div>
+
+  <div class="my-5 flex items-center gap-2">
+    <%= form.label :published %>
+    <%= form.checkbox :published, class: ["block shadow-sm rounded-md border order-first h-5 w-5", {"border-gray-400 focus:outline-blue-600": post.errors[:published].none?, "border-red-400 focus:outline-red-600": post.errors[:published].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :cover_image, "Cover Image", class: "block font-medium mb-2" %>
+    <%= form.file_field :cover_image, class: "block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100 cursor-pointer" %>
+    <% if post.cover_image.attached? %>
+      <div class="mt-3 flex items-center gap-4">
+        <%= image_tag post.cover_image, class: "w-24 h-24 object-cover rounded-md" %>
+        <div class="flex items-center gap-2">
+          <%= form.check_box :remove_cover_image %>
+          <%= form.label :remove_cover_image, "Remove image", class: "text-sm text-red-500 cursor-pointer" %>
+        </div>
+      </div>
+    <% end %>
+  </div>     
+
+
+
+  <div class="inline">
+    <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>
