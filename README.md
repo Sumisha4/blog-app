@@ -1,24 +1,45 @@
-# README
+# BlogApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A full-stack blog platform built with Ruby on Rails.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- User authentication (sign up, log in, sign out) with Devise
+- Create, edit, delete and publish/unpublish blog posts
+- Cover image uploads with ActiveStorage
+- Nested comments with ownership-based delete
+- Role-based authorization with Pundit
+- Background email notifications with ActiveJob and ActionMailer
+- Fragment caching for performance
+- REST API at `/api/v1/posts`
 
-* System dependencies
+## Tech Stack
 
-* Configuration
+- **Framework:** Ruby on Rails 8.1
+- **Database:** PostgreSQL
+- **Authentication:** Devise
+- **Authorization:** Pundit
+- **Styling:** Tailwind CSS
+- **File Uploads:** ActiveStorage
+- **Background Jobs:** ActiveJob
+- **Deployment:** Render
 
-* Database creation
+## Getting Started
 
-* Database initialization
+```bash
+git clone https://github.com/Sumisha4/blog-app.git
+cd blog-app
+bundle install
+rails db:create db:migrate
+bin/dev
+```
 
-* How to run the test suite
+Visit `http://localhost:3000`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Live Demo
 
-* Deployment instructions
+[https://blog-app-qza4.onrender.com]
 
-* ...
+## API
+
+Get all published posts:
